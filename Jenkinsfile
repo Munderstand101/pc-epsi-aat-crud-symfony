@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "$PATH:/usr/local/bin" // Ajoutez le chemin de Git si nécessaire
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -10,13 +14,15 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-                sh 'composer install'
+                // Utilisez la commande "bat" pour Windows
+                bat 'composer install'
             }
         }
 
         stage('Run tests') {
             steps {
-                sh 'php bin/phpunit'
+                // Utilisez la commande "bat" pour Windows
+                bat 'php bin/phpunit --log-junit tests/report.xml'
             }
         }
     }
