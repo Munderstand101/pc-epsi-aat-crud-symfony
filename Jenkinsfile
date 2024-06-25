@@ -18,8 +18,6 @@ stage('Prepare Database') {
             steps {
                 // Migrate the database schema to the latest version
                 bat 'php bin/console doctrine:migrations:migrate --env=test --no-interaction'
-                // Load fixtures
-                bat 'php bin/console doctrine:fixtures:load --env=test --no-interaction'
             }
         }
         
