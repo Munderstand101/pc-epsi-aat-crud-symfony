@@ -14,17 +14,14 @@ pipeline {
             }
         }
 
-
-        stage('Prepare Database') {
+stage('Prepare Database') {
             steps {
-                // Migrate the database schema to the latest version. Adjust as necessary for your environment.
+                // Migrate the database schema to the latest version
                 bat 'php bin/console doctrine:migrations:migrate --env=test --no-interaction'
-
-                // Load fixtures if your tests require pre-populated data (optional).
+                // Load fixtures
                 bat 'php bin/console doctrine:fixtures:load --env=test --no-interaction'
             }
         }
-
         
      stage('Install dependencies') {
             steps {
