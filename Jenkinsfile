@@ -12,12 +12,6 @@ pipeline {
             }
         }
 
-        stage('Install dependencies') {
-            steps {
-                // Utilisez la commande "bat" pour Windows
-                bat 'composer install'
-            }
-        }
 
         stage('Run tests') {
             steps {
