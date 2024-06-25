@@ -2,7 +2,11 @@ pipeline {
     agent any
 
    
+   environment {
+        PATH = "C:\\Tools\\php\\php-8.3.8-nts-Win32-vs16-x64;$PATH"
+    }
 
+    
     stages {
         stage('Checkout') {
             steps {
