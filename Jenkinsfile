@@ -13,7 +13,13 @@ pipeline {
                 git url: 'https://github.com/Munderstand101/pc-epsi-aat-crud-symfony.git', branch: 'master'
             }
         }
-
+        
+     stage('Install dependencies') {
+            steps {
+                // Utilisez la commande "bat" pour Windows
+                bat 'composer install'
+            }
+        }
 
         stage('Run tests') {
             steps {
