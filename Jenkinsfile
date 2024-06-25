@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = "$PATH:/usr/local/bin" // Ajoutez le chemin de Git si nécessaire
-    }
+   
 
     stages {
         stage('Checkout') {
