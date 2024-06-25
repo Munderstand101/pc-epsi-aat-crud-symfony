@@ -13,6 +13,18 @@ pipeline {
                 git url: 'https://github.com/Munderstand101/pc-epsi-aat-crud-symfony.git', branch: 'master'
             }
         }
+
+
+        stage('Prepare Database') {
+            steps {
+                // Migrate the database schema to the latest version. Adjust as necessary for your environment.
+                bat 'php bin/console doctrine:migrations:migrate --env=test --no-interaction'
+
+                // Load fixtures if your tests require pre-populated data (optional).
+                bat 'php bin/console doctrine:fixtures:load --env=test --no-interaction'
+            }
+        }
+
         
      stage('Install dependencies') {
             steps {
